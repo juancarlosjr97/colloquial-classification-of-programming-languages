@@ -66,7 +66,9 @@ The error when running the go compiler will be `syntax error: unexpected newline
 
 * Strongly typed: Variable type `str` does not allow operations with type `int` or any other type other than `str`.
 
-This will fail as the variable are not compatible:
+#### Example 1
+
+The following example will fail as the variable are not compatible:
 
 ```python
 variable_name: str = "1"
@@ -76,11 +78,21 @@ result_error = variable_name + variable_number
 
 This will fail as the result would be `Line 3 - TypeError: can only concatenate str (not "int") to str`.
 
+#### Example 2
+
+Python is not a "statically typed" language, therefore it is not need to declare variables before using them, or declare their type. As a result, example 1 and example 2 are equal during runtime and will produce the same error `Line 3 - TypeError: can only concatenate str (not "int") to str`.
+
+```python
+variable_name = "1"
+variable_number = 97
+result_error = variable_name + variable_number
+```
+
 * Dynamic typing: A variable type can be updated during runtime.
 
 This will finish successfully as the `variable_number` initially as type number has been assigned a value of type `string` during runtime.
 
-#### Example 1
+#### Example 3
 
 ```python
 variable_name: str = "Juan"
@@ -91,7 +103,7 @@ result_success = variable_name + " " + variable_number
 
 The `result_success` will have a value of `Juan Carlos`.
 
-#### Example 2
+#### Example 4
 
 ```python
 variable_number: int = 97
@@ -116,7 +128,7 @@ $result_success = $variable_string_number + $variable_number
 
 The result of the above operation would be `98` of type `integer`, as `$variable_string_number` is a numeric string.
 
-#### Example 12
+#### Example 2
 
 This will fail as the variable `$variable_string` is a string and does not allow arithmetic operation between non numeric strings and `integer` types.
 
