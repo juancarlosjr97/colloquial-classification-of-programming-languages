@@ -6,19 +6,23 @@ These definitions were not defined by me. I have grouped information from multip
 
 ## Classifications
 
-### Strongly typed
+### Strongly vs Weakly Typed
+
+#### Strongly typed
 
 Strongly-typed languages do not allow implicit conversions between unrelated types. Strong typing, you will only be allowed operations on the data by direct manipulation of the objects of that data type. Variables and other data structures can be declared to be of a specific type and check the validity of their values
 
-### Weakly Typed - Loosely Typed - Untyped Language
+#### Weakly Typed - Loosely Typed - Untyped Language
 
 Weakly-type languages make conversions between unrelated types implicitly. Weak typing allows you to operate on data without considering its type. You do not have to specify what type of information will be stored in a variable in advance
 
-### Dynamic Typing
+### Static vs Dynamic Typing
+
+#### Dynamic Typing
 
 Dynamically-typed languages perform type checking at runtime
 
-### Static Typing
+#### Static Typing
 
 Statically typed languages perform type checking at compile time
 
@@ -31,14 +35,16 @@ Statically typed languages perform type checking at compile time
 This will fail as the variable are not compatible
 
 ```python
-variable_name: str = "Juan"
+variable_name: str = "1"
 variable_number: int = 97
 result_error = variable_name + variable_number
 ```
 
+This will fail as the result would be `Line 3 - TypeError: can only concatenate str (not "int") to str`
+
 * Dynamic typing: A variable type can be updated during runtime
 
-This will finish successfully as the `variable_number` initially as type number has been assigned `Carlos` as the value
+This will finish successfully as the `variable_number` initially as type number has been assigned a value of type `string` during runtime
 
 #### Example 1
 
@@ -46,27 +52,61 @@ This will finish successfully as the `variable_number` initially as type number 
 variable_name: str = "Juan"
 variable_number: int = 97
 variable_number = "Carlos"
-result_success = variable_name + variable_number
+result_success = variable_name + " " + variable_number
 ```
+
+The `result_success` will have a value of `Juan Carlos`
 
 #### Example 2
 
 ```python
 variable_number: int = 97
-variable_number = "Carlos"
+variable_number = "Juan"
 ```
+
+The variable `variable_number` initially declared as `integer` can be modified during runtime to hold a value of type `string` as `Juan`
+
+### PHP
+
+* Weakly typed: Variable type `string` allow operations with type `integer`
+
+#### Example 1 
+
+This will pass as the variable `$variable_string_number` is a string integer
+
+```php
+$variable_string_number = "1"
+$variable_number = 97
+$result_success = $variable_string_number + $variable_number
+```
+
+The result of the above operation would be `98` of type `integer`, as `$variable_string_number` is a numeric string
+
+#### Example 12
+
+This will fail as the variable `$variable_string` is a string and does not allow arithmetic operation between non numeric strings and `integer` types
+
+```php
+$variable_string_number = "Juan"
+$variable_number = 97
+$result_fail = $variable_string_number + $variable_number
+```
+
+The result of the above operation would be `Uncaught TypeError: Unsupported operand types: string + int [...]:3`
 
 ### JavaScript
 
 * Weakly typed: Variable type `string` allow operations with type `number`
 
-This will pass as JavaScript allows implicit conversion between unrelated types during runtime.
+This will be executed successfully as JavaScript allows implicit conversion between unrelated types during runtime.
 
 ```js
 let variableName = "Juan"
 let variableNumber = 97
 let resultSuccess = variableName + variableNumber 
 ```
+
+The value that `resultSuccess` that will have at the end is `Juan97`
 
 * Dynamic typing: A variable type can be updated during runtime
 
@@ -77,6 +117,8 @@ let variableName;
 variableName = "Juan";
 variableNumber = 97;
 ```
+
+The value that `variableNumber` will have at the end of the execution will be `97` and type of `number`
 
 ### TypeScript
 
@@ -97,9 +139,11 @@ variableName = "Juan";
 variableName = 97; //Type 'number' is not assignable to type 'string'.
 ```
 
-#### Important note
+**Important note**
 
-As TypeScript is a superset of JavaScript that will allow ignore rules set by TypeScript to use dynamically typing
+As TypeScript is a superset of JavaScript that will allow ignore rules set by TypeScript to use dynamically typing using `any` that will be the equivalent to `untyped` variable on JavaScript
+
+#### Example 1
 
 By not adding a variable type, by default the `variableName` has type `any`. The following example will pass successfully
 
@@ -108,6 +152,10 @@ let variableName;
 variableName = "Juan";
 variableName = 97;
 ```
+
+After compilation, and executing the variable `variableName` will have the value `97` and will be type of `number`
+
+#### Example 2
 
 By adding a variable type as `string` and adding `@ts-ignore`. The following example will pass and compile to JavaScript successfully
 
