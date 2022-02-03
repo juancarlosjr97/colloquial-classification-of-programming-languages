@@ -28,6 +28,40 @@ Statically typed languages perform type checking at compile time
 
 ## Examples
 
+### Go
+
+* Strongly Typed: Allowing at any point to know exactly what type of value each variable and allow operations according to their type
+
+#### Example 1
+
+```go
+package main
+
+func main() {
+    var variableName string = "Juan"
+    var variableNumber int = 97
+    variableName = variableNumber
+}
+```
+
+The above example will fail to compile as `variableName` is type `string` and `variableNumber` is type `int` with the error message `cannot use 97 (type untyped int) as type string in assignment`
+
+* Statically Typing: Go is a statically typed as a type is expected when declaring new variables
+
+#### Example 2
+
+This example will fail to compile
+
+```go
+package main
+
+func main() {
+    var variableName
+}
+```
+
+The error when running the go compiler will be `syntax error: unexpected newline, expecting type` as the variable `variableName` is missing the type declaration or initial value to identify the type
+
 ### Python
 
 * Strongly typed: Variable type `str` does not allow operations with type `int` ot any other type different to `str`
